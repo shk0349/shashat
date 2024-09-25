@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:insert="~{top :: menu}"></div>
+<body>
+<div class="container">
+    <h2>성적출력</h2>
+    <table class="table table-hover" style="width:1200px">
+
+        <thead>
+            <tr>
+                <th style="text-align:center">학번</th>
+                <th style="text-align:center">학년/반/번호</th>
+                <th style="text-align:center">이름</th>
+                <th style="text-align:center">국어점수</th>
+                <th style="text-align:center">영어점수</th>
+                <th style="text-align:center">수학점수</th>
+                <th style="text-align:center">총점수</th>
+                <th style="text-align:center">평균점수</th>
+                <th style="text-align:center">학점</th>
+                <th style="text-align:center">반등수</th>
+                <th style="text-align:center">전교등수</th>
+                <th style="text-align:center">비고</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="score : ${list}">
+                <td th:text="${score.hakbun}" style="text-align:center"></td>
+                <td th:text="${score.sclass} + '학년 ' + ${score.sban} + '반 ' + ${score.sbunho} + '번 '" style="text-align:center"></td>
+                <td th:text="${score.sname}" style="text-align:center"></td>
+                <td th:text="${score.kor} + '점'" style="text-align:center"></td>
+                <td th:text="${score.eng} + '점'" style="text-align:center"></td>
+                <td th:text="${score.mat} + '점'" style="text-align:center"></td>
+                <td th:text="${score.tot} + '점'" style="text-align:center"></td>
+                <td th:text="${score.avg} + '점'" style="text-align:center"></td>
+                <td th:text="${score.hakjum}" style="text-align:center"></td>
+                <td th:text="${score.sclass} + '학년 ' + ${score.sban} + '반 ' + ${score.brank} + '등'" style="text-align:center"></td>
+                <td th:text="${score.crank} + '등'" style="text-align:center"></td>
+                <td style="text-align:center">
+                    <a th:href="@{/scoreupdateview?hakbun={hakbun}(hakbun=${score.hakbun})}">수정</a> /
+                    <a th:href="@{/scoredeleteview?hakbun={hakbun}(hakbun=${score.hakbun})}">삭제</a>
+                </td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="11" style="text-align:center">
+                    <button type="button" class="btn btn-primary" onclick="location.href='scoreinput'">성적추가입력</button>
+                    <button type="button" class="btn btn-success" onclick="location.href='main'">메인화면</button>
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+</div>
+</body>
+</html>

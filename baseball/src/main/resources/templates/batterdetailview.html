@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:insert="~{top :: menu}"></div>
+<body>
+<div class="container" style="width:2000px">
+    <h2 th:text="|${bt.proteam} ${bt.bname} ${bt.season}시즌 세부성적|"></h2>
+    <table class="table table-hover" style="width:2000px">
+
+        <thead>
+            <tr>
+                <th style="text-align:center">선수</th><th style="text-align:center">경기수</th><th style="text-align:center">타석</th>
+                <th style="text-align:center">유효타석</th><th style="text-align:center">타수</th><th style="text-align:center">안타</th>
+                <th style="text-align:center">1루타</th><th style="text-align:center">2루타</th><th style="text-align:center">3루타</th>
+                <th style="text-align:center">홈런</th><th style="text-align:center">루타</th><th style="text-align:center">득점</th>
+                <th style="text-align:center">타점</th><th style="text-align:center">볼넷</th><th style="text-align:center">사구</th>
+                <th style="text-align:center">고의사구</th><th style="text-align:center">병살타</th>
+            </tr>
+            <tr>
+                <td th:text="${bt.bname}" style="text-align:center"></td><td th:text="${bt.bgame}" style="text-align:center"></td><td th:text="${bt.pa}" style="text-align:center"></td>
+                <td th:text="${bt.epa}" style="text-align:center"></td><td th:text="${bt.ab}" style="text-align:center"></td><td th:text="${bt.hits}" style="text-align:center"></td>
+                <td th:text="${bt.single}" style="text-align:center"></td><td th:text="${bt.doub}" style="text-align:center"></td><td th:text="${bt.triple}" style="text-align:center"></td>
+                <td th:text="${bt.hr}" style="text-align:center"></td><td th:text="${bt.tb}" style="text-align:center"></td><td th:text="${bt.runs}" style="text-align:center"></td>
+                <td th:text="${bt.rbi}" style="text-align:center"></td><td th:text="${bt.bb}" style="text-align:center"></td><td th:text="${bt.hp}" style="text-align:center"></td>
+                <td th:text="${bt.ib}" style="text-align:center"></td><td th:text="${bt.gdp}" style="text-align:center"></td>
+            </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <th style="text-align:center">도루</th><th style="text-align:center">도루실패</th><th style="text-align:center">삼진</th>
+            <th style="text-align:center">희생타</th><th style="text-align:center">희생플라이</th><th style="text-align:center">타율</th>
+            <th style="text-align:center">출루율</th><th style="text-align:center">장타율</th><th style="text-align:center">OPS</th>
+            <th style="text-align:center">순출루율</th><th style="text-align:center">순장타율</th><th style="text-align:center">타석당 삼진율</th>
+            <th style="text-align:center">타석당 볼넷율</th><th style="text-align:center">볼삼비</th><th style="text-align:center">도루성공율</th>
+            <th style="text-align:center">wRC+</th><th style="text-align:center">WAR</th>
+        </tr>
+
+        <tr>
+            <td th:text="${bt.sb}" style="text-align:center"></td><td th:text="${bt.cs}" style="text-align:center"></td><td th:text="${bt.so}" style="text-align:center"></td>
+            <td th:text="${bt.sh}" style="text-align:center"></td><td th:text="${bt.sf}" style="text-align:center"></td><td th:text="${bt.avg}" style="text-align:center"></td>
+            <td th:text="${bt.obp}" style="text-align:center"></td><td th:text="${bt.slg}" style="text-align:center"></td><td th:text="${bt.ops}" style="text-align:center"></td>
+            <td th:text="${bt.isod}" style="text-align:center"></td><td th:text="${bt.isop}" style="text-align:center"></td><td th:text="${bt.kp}+'%'" style="text-align:center"></td>
+            <td th:text="${bt.bp}+'%'" style="text-align:center"></td><td th:text="${bt.bbk}" style="text-align:center"></td><td th:text="${bt.sbsp}+'%'" style="text-align:center"></td>
+            <td th:text="${bt.wrcp}" style="text-align:center"></td><td th:text="${bt.bwar}" style="text-align:center"></td>
+        </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="20" style="text-align:center">
+                    <button type="button" class="btn btn-primary" onclick="location.href='batterout'">뒤로가기</button>
+                    <button type="button" class="btn btn-success" onclick="location.href='main'">메인화면</button>
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+</div>
+</body>
+</html>

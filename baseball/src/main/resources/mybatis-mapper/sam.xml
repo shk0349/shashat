@@ -1,0 +1,80 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.baseball.service.BaseballService">
+
+    <insert id="insertb">
+        insert into kbobatter values(#{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8},
+        #{param9}, #{param10}, #{param11}, #{param12}, #{param13}, #{param14}, #{param15}, #{param16}, #{param17}, #{param18},
+        #{param19}, #{param20}, #{param21}, #{param22}, #{param23}, #{param24})
+    </insert>
+
+    <select id="outb" resultType="com.example.baseball.dto.BatterDTO">
+        select season, proteam, bname, bgame, (single+doub+triple+hr) as hits,
+        doub, triple, hr, runs, rbi, sb, bb, so,
+        round(((single+doub+triple+hr)/ab) ,3) as avg,
+        round(((single+doub+triple+hr+bb+hp)/(ab+bb+hp+sf)) ,3) as obp,
+        round(((single+(doub*2)+(triple*3)+(hr*4))/ab) ,3) as slg,
+        round((((single+doub+triple+hr+bb+hp)/(ab+bb+hp+sf))+((single+(doub*2)+(triple*3)+(hr*4))/ab)) ,3) as ops,
+        round(wrcp ,1) as wrcp,
+        round(bwar ,2) as bwar
+        from kbobatter order by bwar desc
+    </select>
+
+    <select id="dtvb" resultType="com.example.baseball.dto.BatterDTO">
+        select season, proteam, bname, bgame, pa, epa, ab, runs, single, doub, triple, hr, rbi, sb, cs,
+        bb, hp, ib, so, gdp, sh, sf,
+        round(wrcp ,1) as wrcp,
+        round(bwar ,2) as bwar,
+        (single+doub+triple+hr) as hits,
+        (single+(doub*2)+(triple*3)+(hr*4)) as tb,
+        round(((single+doub+triple+hr)/ab) ,3) as avg,
+        round(((single+doub+triple+hr+bb+hp)/(ab+bb+hp+sf)) ,3) as obp,
+        round(((single+(doub*2)+(triple*3)+(hr*4))/ab) ,3) as slg,
+        round((((single+doub+triple+hr+bb+hp)/(ab+bb+hp+sf))+((single+(doub*2)+(triple*3)+(hr*4))/ab)) ,3) as ops,
+        round((((single+doub+triple+hr+bb+hp)/(ab+bb+hp+sf))-((single+doub+triple+hr)/ab)),3) as isod,
+        round((((single+(doub*2)+(triple*3)+(hr*4))/ab)-((single+doub+triple+hr)/ab)),3) as isop,
+        round(((so/pa)*100),2) as kp,
+        round((((bb)/pa)*100),2) as bp,
+        round((((bb)/so)),2) as bbk,
+        round(((sb/(sb+cs))*100),2) as sbsp
+        from kbobatter where bname=#{param1} and season=#{param2} and proteam=#{param3}
+    </select>
+
+    <select id="delvb" resultType="com.example.baseball.dto.BatterDTO">
+        select season, proteam, bname, bgame, (single+doub+triple+hr) as hits,
+        doub, triple, hr, runs, rbi, sb, bb, so, pa, epa, ab, single, cs, hp, ib, gdp, sh, sf,
+        round(((single+doub+triple+hr)/ab) ,3) as avg,
+        round(((single+doub+triple+hr+bb+hp)/(ab+bb+hp+sf)) ,3) as obp,
+        round(((single+(doub*2)+(triple*3)+(hr*4))/ab) ,3) as slg,
+        round((((single+doub+triple+hr+bb+hp)/(ab+bb+hp+sf))+((single+(doub*2)+(triple*3)+(hr*4))/ab)) ,3) as ops,
+        round(wrcp ,1) as wrcp,
+        round(bwar ,2) as bwar
+        from kbobatter where bname=#{param1} and season=#{param2} and proteam=#{param3}
+    </select>
+
+    <delete id="deleteb">
+        delete from kbobatter where bname=#{param1} and season=#{param2} and proteam=#{param3}
+    </delete>
+
+    <select id="updvb" resultType="com.example.baseball.dto.BatterDTO">
+        select season, proteam, bname, bgame, (single+doub+triple+hr) as hits,
+        doub, triple, hr, runs, rbi, sb, bb, so, pa, epa, ab, single, cs, hp, ib, gdp, sh, sf,
+        round(((single+doub+triple+hr)/ab) ,3) as avg,
+        round(((single+doub+triple+hr+bb+hp)/(ab+bb+hp+sf)) ,3) as obp,
+        round(((single+(doub*2)+(triple*3)+(hr*4))/ab) ,3) as slg,
+        round((((single+doub+triple+hr+bb+hp)/(ab+bb+hp+sf))+((single+(doub*2)+(triple*3)+(hr*4))/ab)) ,3) as ops,
+        round(wrcp ,1) as wrcp,
+        round(bwar ,2) as bwar
+        from kbobatter where bname=#{param1} and season=#{param2} and proteam=#{param3}
+    </select>
+
+    <update id="updateb">
+        update kbobatter set bgame=#{param4}, pa=#{param5}, epa=#{param6}, ab=#{param7}, runs=#{param8}, single=#{param9},
+        doub=#{param10}, triple=#{param11}, hr=#{param12}, rbi=#{param13}, sb=#{param14}, cs=#{param15}, bb=#{param16},
+        hp=#{param17}, ib=#{param18}, so=#{param19}, gdp=#{param20}, sh=#{param21}, sf=#{param22}, wrcp=#{param23}, bwar=#{param24}
+        where bname=#{param3} and season=#{param1} and proteam=#{param2}
+    </update>
+
+</mapper>

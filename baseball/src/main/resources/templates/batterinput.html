@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:insert="~{top :: menu}"></div>
+<h2 th:text=${'성적입력'}></h2>
+<body>
+<form action="battersave" method="post">
+    <div class="form-group" style="width:50%">
+        <label for="season">시즌</label>
+        <select id="season" name="season">
+            <option value="1982">1982</option><option value="1983">1983</option><option value="1984">1984</option>
+            <option value="1985">1985</option><option value="1986">1986</option><option value="1987">1987</option>
+            <option value="1988">1988</option><option value="1989">1989</option>
+
+            <option value="1990">1990</option>
+            <option value="1991">1991</option><option value="1992">1992</option><option value="1993">1993</option>
+            <option value="1994">1994</option><option value="1995">1995</option><option value="1996">1996</option>
+            <option value="1997">1997</option><option value="1998">1998</option><option value="1999">1999</option>
+
+            <option value="2000">2000</option>
+            <option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option>
+            <option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option>
+            <option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option>
+
+            <option value="2010">2010</option>
+            <option value="2011">2011</option><option value="2012">2012</option><option value="2013">2013</option>
+            <option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option>
+            <option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option>
+
+            <option value="2020">2020</option>
+            <option value="2021">2021</option><option value="2022">2022</option>
+            <option value="2023">2023</option><option value="2024">2024</option>
+        </select>
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="proteam">소속구단</label>
+        <select id="proteam" name="proteam">
+            <option value="기아타이거즈">기아타이거즈</option>
+            <option value="해태타이거즈">해태타이거즈</option>
+            <option value="삼성라이온즈">삼성라이온즈</option>
+            <option value="LG트윈스">LG트윈스</option>
+            <option value="MBC청룡">MBC청룡</option>
+            <option value="KT위즈">KT위즈</option>
+            <option value="두산베어스">두산베어스</option>
+            <option value="OB베어스">OB베어스</option>
+            <option value="한화이글스">한화이글스</option>
+            <option value="빙그레이글스">빙그레이글스</option>
+            <option value="롯데자이언츠">롯데자이언츠</option>
+            <option value="NC다이노스">NC다이노스</option>
+            <option value="SGG랜더스">SGG랜더스</option>
+            <option value="SK와이번즈">SK와이번즈</option>
+            <option value="태평양돌핀스">태평양돌핀스</option>
+            <option value="청보핀토스">청보핀토스</option>
+            <option value="삼미슈퍼스타즈">삼미슈퍼스타즈</option>
+            <option value="쌍방울레이더스">쌍방울레이더스</option>
+            <option value="키움히어로즈">키움히어로즈</option>
+            <option value="넥센히어로즈">넥센히어로즈</option>
+            <option value="현대유니콘스">현대유니콘스</option>
+        </select>
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="bname">선수이름:</label>
+        <input type="text" class="form-control" id="bname" name="bname">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="bgame">출장경기:</label>
+        <input type="number" class="form-control" id="bgame" name="bgame">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="pa">타석:</label>
+        <input type="number" class="form-control" id="pa" name="pa">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="epa">유효타석:</label>
+        <input type="number" class="form-control" id="epa" name="epa">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="ab">타수:</label>
+        <input type="number" class="form-control" id="ab" name="ab">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="single">1루타:</label>
+        <input type="number" class="form-control" id="single" name="single">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="doub">2루타:</label>
+        <input type="number" class="form-control" id="doub" name="doub">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="triple">3루타:</label>
+        <input type="number" class="form-control" id="triple" name="triple">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="hr">홈런:</label>
+        <input type="number" class="form-control" id="hr" name="hr">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="runs">득점:</label>
+        <input type="number" class="form-control" id="runs" name="runs">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="rbi">타점:</label>
+        <input type="number" class="form-control" id="rbi" name="rbi">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="sb">도루성공:</label>
+        <input type="number" class="form-control" id="sb" name="sb">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="cs">도루실패:</label>
+        <input type="number" class="form-control" id="cs" name="cs">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="bb">볼넷:</label>
+        <input type="number" class="form-control" id="bb" name="bb">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="hp">사구:</label>
+        <input type="number" class="form-control" id="hp" name="hp">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="ib">고의사구:</label>
+        <input type="number" class="form-control" id="ib" name="ib">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="so">삼진:</label>
+        <input type="number" class="form-control" id="so" name="so">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="gdp">병살타:</label>
+        <input type="number" class="form-control" id="gdp" name="gdp">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="sh">희생타:</label>
+        <input type="number" class="form-control" id="sh" name="sh">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="sf">희생플라이:</label>
+        <input type="number" class="form-control" id="sf" name="sf">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="wrcp">wrc+:</label>
+        <input type="number" class="form-control" id="wrcp" name="wrcp" step="0.01">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="bwar">war:</label>
+        <input type="number" class="form-control" id="bwar" name="bwar" step="0.01">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <button type="submit" class="btn btn-success">전송</button>
+        <button type="reset" class="btn btn-warning">취소</button>
+        <button type="button" class="btn btn-danger" onclick="location.href='main'">메인화면</button>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:insert="~{top :: menu}"></div>
+<h2 th:text=${'성적삭제'}></h2>
+<body>
+<form action="scoredelete" method="post">
+    <div class="form-group" style="width:50%">
+        <label for="hakbun">학번:</label>
+        <input type="text" class="form-control" id="hakbun" name="hakbun" th:value="${dto.hakbun}" readonly>
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="sclass">학년:</label>
+        <input type="number" class="form-control" id="sclass" name="sclass" th:value="${dto.sclass}" readonly>
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="sban">반:</label>
+        <input type="number" class="form-control" id="sban" name="sban" th:value="${dto.sban}" readonly>
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="sbunho">번호:</label>
+        <input type="number" class="form-control" id="sbunho" name="sbunho" th:value="${dto.sbunho}" readonly>
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="sname">이름:</label>
+        <input type="text" class="form-control" id="sname" name="sname" th:value="${dto.sname}" readonly>
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="kor">국어점수:</label>
+        <input type="number" class="form-control" id="kor" name="kor" th:value="${dto.kor}" readonly>
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="eng">영어점수:</label>
+        <input type="number" class="form-control" id="eng" name="eng" th:value="${dto.eng}" readonly>
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="mat">수학점수:</label>
+        <input type="number" class="form-control" id="mat" name="mat" th:value="${dto.mat}" readonly>
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="avg">평균점수:</label>
+        <input type="number" class="form-control" id="avg" name="avg" th:value="${dto.avg}" readonly>
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="hakjum">학점:</label>
+        <input type="text" class="form-control" id="hakjum" name="hakjum" th:value="${dto.hakjum}" readonly>
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <button type="submit" class="btn btn-success">삭제</button>
+        <button type="button" class="btn btn-warning" onclick="location.href='scoreout'">삭제취소</button>
+        <button type="button" class="btn btn-danger" onclick="location.href='main'">메인화면</button>
+    </div>
+</form>
+</body>
+</html>

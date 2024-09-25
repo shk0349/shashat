@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:insert="~{top :: menu}"></div>
+<h2 th:text=${'타자성적수정'}></h2>
+<body>
+<form action="batterupdate" method="post">
+    <div class="form-group" style="width:50%">
+        <label for="season">시즌:</label>
+        <input type="number" class="form-control" id="season" name="season" th:value="${bt.season}" readonly>
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="proteam">소속구단:</label>
+        <input type="text" class="form-control" id="proteam" name="proteam" th:value="${bt.proteam}" readonly>
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="bname">선수이름:</label>
+        <input type="text" class="form-control" id="bname" name="bname" th:value="${bt.bname}" readonly>
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="bgame">출장경기:</label>
+        <input type="number" class="form-control" id="bgame" name="bgame" th:value="${bt.bgame}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="pa">타석:</label>
+        <input type="number" class="form-control" id="pa" name="pa" th:value="${bt.pa}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="epa">유효타석:</label>
+        <input type="number" class="form-control" id="epa" name="epa" th:value="${bt.epa}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="ab">타수:</label>
+        <input type="number" class="form-control" id="ab" name="ab" th:value="${bt.ab}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="single">1루타:</label>
+        <input type="number" class="form-control" id="single" name="single" th:value="${bt.single}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="doub">2루타:</label>
+        <input type="number" class="form-control" id="doub" name="doub" th:value="${bt.doub}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="triple">3루타:</label>
+        <input type="number" class="form-control" id="triple" name="triple" th:value="${bt.triple}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="hr">홈런:</label>
+        <input type="number" class="form-control" id="hr" name="hr" th:value="${bt.hr}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="runs">득점:</label>
+        <input type="number" class="form-control" id="runs" name="runs" th:value="${bt.runs}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="rbi">타점:</label>
+        <input type="number" class="form-control" id="rbi" name="rbi" th:value="${bt.rbi}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="sb">도루성공:</label>
+        <input type="number" class="form-control" id="sb" name="sb" th:value="${bt.sb}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="cs">도루실패:</label>
+        <input type="number" class="form-control" id="cs" name="cs" th:value="${bt.cs}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="bb">볼넷:</label>
+        <input type="number" class="form-control" id="bb" name="bb" th:value="${bt.bb}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="hp">사구:</label>
+        <input type="number" class="form-control" id="hp" name="hp" th:value="${bt.hp}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="ib">고의사구:</label>
+        <input type="number" class="form-control" id="ib" name="ib" th:value="${bt.ib}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="so">삼진:</label>
+        <input type="number" class="form-control" id="so" name="so" th:value="${bt.so}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="gdp">병살타:</label>
+        <input type="number" class="form-control" id="gdp" name="gdp" th:value="${bt.gdp}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="sh">희생타:</label>
+        <input type="number" class="form-control" id="sh" name="sh" th:value="${bt.sh}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="sf">희생플라이:</label>
+        <input type="number" class="form-control" id="sf" name="sf" th:value="${bt.sf}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="wrcp">wrc+:</label>
+        <input type="number" class="form-control" id="wrcp" name="wrcp" step="0.01" th:value="${bt.wrcp}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <label for="bwar">war:</label>
+        <input type="number" class="form-control" id="bwar" name="bwar" step="0.01" th:value="${bt.bwar}">
+    </div>
+
+    <div class="form-group" style="width:50%">
+        <button type="submit" class="btn btn-success">수정</button>
+        <button type="button" class="btn btn-warning" onclick="location.href='batterout'">취소</button>
+        <button type="button" class="btn btn-danger" onclick="location.href='main'">메인화면</button>
+    </div>
+</form>
+</body>
+</html>
