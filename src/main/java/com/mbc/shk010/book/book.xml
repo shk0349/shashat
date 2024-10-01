@@ -1,0 +1,66 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mbc.shk010.book.BookService">
+
+<insert id="insertb">
+	insert into book0904 values(bnum0904_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, 0)
+</insert>
+
+<select id="outb" resultType="com.mbc.shk010.book.BookDTO">
+	select * from book0904
+</select>
+
+<select id="delviewb" resultType="com.mbc.shk010.book.BookDTO">
+	select * from book0904 where bnum=#{param1}
+</select>
+
+<delete id="deleteb">
+	delete from book0904 where bnum=#{param1}
+</delete>
+
+<select id="updviewb" resultType="com.mbc.shk010.book.BookDTO">
+	select * from book0904 where bnum=#{param1}
+</select>
+
+<update id="updateb">
+	update book0904 set bname=#{param1}, bwriter=#{param2}, bcompany=#{param3}, bprice=#{param4}, bdate=#{param5}, binfo=#{param6}, bimage=#{param7}, bcnt=0 where bnum=#{param8}
+</update>
+
+<update id="readcntb">
+	update book0904 set bcnt=bcnt+1 where bnum=#{param1}
+</update>
+
+<select id="detailb" resultType="com.mbc.shk010.book.BookDTO">
+	select * from book0904 where bnum=#{param1}
+</select>
+
+<select id="bsn" resultType="com.mbc.shk010.book.BookDTO">
+	select * from book0904 where bname like #{param1}
+</select>
+
+<select id="bsw" resultType="com.mbc.shk010.book.BookDTO">
+	select * from book0904 where bwriter like #{param1}
+</select>
+
+<select id="bsc" resultType="com.mbc.shk010.book.BookDTO">
+	select * from book0904 where bcompany like #{param1}
+</select>
+
+<select id="bsi" resultType="com.mbc.shk010.book.BookDTO">
+	select * from book0904 where binfo like #{param1}
+</select>
+
+<select id="total" resultType="int">
+   select count(*) from book0904
+</select>
+
+<select id="page" resultType="com.mbc.shk010.book.BookDTO">
+   select * from (
+   select rownum rn,A.* from(  
+   select * from book0904)A)
+	where rn between #{start} AND #{end}
+</select>
+
+</mapper>

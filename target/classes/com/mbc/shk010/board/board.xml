@@ -1,0 +1,75 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mbc.shk010.board.BoardService">
+
+<insert id="insertb">
+	insert into board(bnum, bwriter, btitle, bcontents, groups) values(bnum0909_seq.nextval, #{param1}, #{param2}, #{param3}, bnum0909_seq.currval)
+</insert>
+
+<select id="outb" resultType="com.mbc.shk010.board.BoardDTO">
+	select bnum, bwriter, btitle, bcontents, to_char(bdate, 'yyyy-MM-dd') as bdate, bcnt, groups, step, indent from board order by groups desc, step asc
+</select>
+
+<update id="countb">
+	update board set bcnt=bcnt+1 where bnum=#{param1}
+</update>
+
+<select id="detailvb" resultType="com.mbc.shk010.board.BoardDTO">
+	select bnum, bwriter, btitle, bcontents, to_char(bdate, 'yyyy-MM-dd') as bdate, bcnt, groups, step, indent from board where bnum=#{param1}
+</select>
+
+<select id="replyb" resultType="com.mbc.shk010.board.BoardDTO">
+	select bnum, bwriter, btitle, bcontents, to_char(bdate, 'yyyy-MM-dd') as bdate, bcnt, groups, step, indent from board where bnum=#{param1}
+</select>
+
+<update id="stepup">
+	update board set step=step+1 where groups = #{param1} and step > #{param2} 
+</update>
+
+<insert id="replyinsertb">
+	insert into board(bnum, bwriter, btitle, bcontents, groups, step, indent) 
+	values(bnum0909_seq.nextval, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7})
+</insert>
+
+<select id="total" resultType="int">
+   select count(*) from BOARD
+</select>
+
+<select id="page" resultType="com.mbc.shk010.board.BoardDTO">
+   select * from (
+   select rownum rn,A.* from(  
+   select bnum, bwriter, btitle, bcontents, to_char(bdate, 'yyyy-MM-dd') as bdate, bcnt, groups, step, indent from BOARD order by groups DESC,step asc)A)
+   where rn between #{start} AND #{end}
+</select>
+
+<select id="delviewb" resultType="com.mbc.shk010.board.BoardDTO">
+	select bnum, bwriter, btitle, bcontents, to_char(bdate, 'yyyy-MM-dd') as bdate, bcnt from board where bnum=#{param1}
+</select>
+
+<delete id="deleteb">
+	delete from board where bnum=#{param1}
+</delete>
+
+<select id="uptviewb" resultType="com.mbc.shk010.board.BoardDTO">
+	select bnum, bwriter, btitle, bcontents, to_char(bdate, 'yyyy-MM-dd') as bdate, bcnt from board where bnum=#{param1}
+</select>
+
+<update id="updateb">
+	update board set bwriter=#{param1}, btitle=#{param2}, bcontents=#{param3}, bdate='sysdate' where bnum=#{param4}
+</update>
+
+<select id="bsw" resultType="com.mbc.shk010.board.BoardDTO">
+	select bnum, bwriter, btitle, bcontents, to_char(bdate, 'yyyy-MM-dd') as bdate, bcnt, groups, step, indent from board where bwriter like #{param1}
+</select>
+
+<select id="bst" resultType="com.mbc.shk010.board.BoardDTO">
+	select bnum, bwriter, btitle, bcontents, to_char(bdate, 'yyyy-MM-dd') as bdate, bcnt, groups, step, indent from board where btitle like #{param1}
+</select>
+
+<select id="bsc" resultType="com.mbc.shk010.board.BoardDTO">
+	select bnum, bwriter, btitle, bcontents, to_char(bdate, 'yyyy-MM-dd') as bdate, bcnt, groups, step, indent from board where bcontents like #{param1}
+</select>
+
+</mapper>

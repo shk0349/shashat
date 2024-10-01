@@ -1,0 +1,102 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mbc.shk010.score.ScoreService">
+
+<insert id="inserts">
+	insert into score0910 values (#{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8}, #{param9})
+</insert>
+
+<select id="outs" resultType="com.mbc.shk010.score.ScoreDTO">
+	select sclass, sban, sbunho, sname, kor, eng, mat, tot, round(avg, 1) as avg, 
+	case 
+        when avg >= 90 then 'A'
+        when avg >= 80 then 'B'
+        when avg >= 70 then 'C'
+        when avg >= 60 then 'D'
+        else 'F' end as hakjum,
+    rank() over (partition by sclass, sban order by avg desc) as brank,
+    rank() over (order by avg desc) as crank from score0910
+</select>
+
+<select id="delvs" resultType="com.mbc.shk010.score.ScoreDTO">
+	select sclass, sban, sbunho, sname, kor, eng, mat, tot, round(avg, 1) as avg, 
+	case 
+        when avg >= 90 then 'A'
+        when avg >= 80 then 'B'
+        when avg >= 70 then 'C'
+        when avg >= 60 then 'D'
+        else 'F' end as hakjum,
+    rank() over (partition by sclass, sban order by avg desc) as brank,
+    rank() over (order by avg desc) as crank from score0910 where sclass=#{param1} and sban=#{param2} and sbunho=#{param3}
+</select>
+
+<delete id="deletes">
+ delete from score0910 where sclass=#{param1} and sban=#{param2} and sbunho=#{param3}
+</delete>
+
+<select id="updvs" resultType="com.mbc.shk010.score.ScoreDTO">
+	select * from score0910 where sclass=#{param1} and sban=#{param2} and sbunho=#{param3}
+</select>
+
+<update id="updates">
+	update score0910 set kor=#{param1}, eng=#{param2}, mat=#{param3}, tot=#{param4}, avg=#{param5} where sclass=#{param6} and sban=#{param7} and sbunho=#{param8}
+</update>
+
+<select id="ssc" resultType="com.mbc.shk010.score.ScoreDTO">
+	select sclass, sban, sbunho, sname, kor, eng, mat, tot, round(avg, 1) as avg, 
+	case 
+        when avg >= 90 then 'A'
+        when avg >= 80 then 'B'
+        when avg >= 70 then 'C'
+        when avg >= 60 then 'D'
+        else 'F' end as hakjum,
+    rank() over (partition by sclass, sban order by avg desc) as brank,
+    rank() over (order by avg desc) as crank from score0910 where sclass like #{param1}
+</select>
+
+<select id="ssb" resultType="com.mbc.shk010.score.ScoreDTO">
+	select sclass, sban, sbunho, sname, kor, eng, mat, tot, round(avg, 1) as avg, 
+	case 
+        when avg >= 90 then 'A'
+        when avg >= 80 then 'B'
+        when avg >= 70 then 'C'
+        when avg >= 60 then 'D'
+        else 'F' end as hakjum,
+    rank() over (partition by sclass, sban order by avg desc) as brank,
+    rank() over (order by avg desc) as crank from score0910 where sban like #{param1}
+</select>
+
+<select id="ssn" resultType="com.mbc.shk010.score.ScoreDTO">
+	select sclass, sban, sbunho, sname, kor, eng, mat, tot, round(avg, 1) as avg, 
+	case 
+        when avg >= 90 then 'A'
+        when avg >= 80 then 'B'
+        when avg >= 70 then 'C'
+        when avg >= 60 then 'D'
+        else 'F' end as hakjum,
+    rank() over (partition by sclass, sban order by avg desc) as brank,
+    rank() over (order by avg desc) as crank from score0910 where sname like #{param1}
+</select>
+
+<select id="total" resultType="int">
+   select count(*) from score0910
+</select>
+
+<select id="page" resultType="com.mbc.shk010.score.ScoreDTO">
+   select * from (
+   select rownum rn,A.* from(  
+   select sclass, sban, sbunho, sname, kor, eng, mat, tot, round(avg, 1) as avg, 
+	case 
+        when avg >= 90 then 'A'
+        when avg >= 80 then 'B'
+        when avg >= 70 then 'C'
+        when avg >= 60 then 'D'
+        else 'F' end as hakjum,
+    rank() over (partition by sclass, sban order by avg desc) as brank,
+    rank() over (order by avg desc) as crank from score0910)A)
+	where rn between #{start} AND #{end}
+</select>
+
+</mapper>
